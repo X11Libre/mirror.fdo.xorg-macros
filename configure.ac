@@ -27,7 +27,7 @@ AC_INIT([util-macros],
         [https://gitlab.freedesktop.org/xorg/util/macros/issues],
         [util-macros])
 AC_CONFIG_SRCDIR([Makefile.am])
-AM_INIT_AUTOMAKE([foreign dist-bzip2])
+AM_INIT_AUTOMAKE([foreign dist-xz])
 
 # Checks for programs.
 AC_PROG_INSTALL
