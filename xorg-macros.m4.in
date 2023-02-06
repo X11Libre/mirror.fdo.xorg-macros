@@ -1533,7 +1533,11 @@ AM_CONDITIONAL(MAKE_LINT_LIB, [test x$make_lint_lib != xno])
 AC_DEFUN([XORG_COMPILER_BRAND], [
 AC_LANG_CASE(
 	[C], [
-		AC_REQUIRE([AC_PROG_CC_C99])
+		dnl autoconf-2.70 folded AC_PROG_CC_C99 into AC_PROG_CC
+		dnl and complains that AC_PROG_CC_C99 is obsolete
+		m4_version_prereq([2.70],
+			[AC_REQUIRE([AC_PROG_CC])],
+			[AC_REQUIRE([AC_PROG_CC_C99])])
 	],
 	[C++], [
 		AC_REQUIRE([AC_PROG_CXX])
@@ -1565,7 +1569,11 @@ AC_LANG_COMPILER_REQUIRE
 
 AC_LANG_CASE(
 	[C], [
-		AC_REQUIRE([AC_PROG_CC_C99])
+		dnl autoconf-2.70 folded AC_PROG_CC_C99 into AC_PROG_CC
+		dnl and complains that AC_PROG_CC_C99 is obsolete
+		m4_version_prereq([2.70],
+			[AC_REQUIRE([AC_PROG_CC])],
+			[AC_REQUIRE([AC_PROG_CC_C99])])
 		define([PREFIX], [C])
 		define([CACHE_PREFIX], [cc])
 		define([COMPILER], [$CC])
