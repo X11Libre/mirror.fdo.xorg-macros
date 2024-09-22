@@ -1386,6 +1386,11 @@ if test "x$MALLOC_ZERO_RETURNS_NULL" = xauto; then
 AC_CACHE_VAL([xorg_cv_malloc0_returns_null],
 	[AC_RUN_IFELSE([AC_LANG_PROGRAM([
 #include <stdlib.h>
+
+/* avoid https://gitlab.freedesktop.org/xorg/util/macros/-/issues/4 */
+#ifdef __clang__
+#pragma clang optimize off
+#endif
 ],[
     char *m0, *r0, *c0, *p;
     m0 = malloc(0);
